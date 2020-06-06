@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a102e5edf5b84f1ba250794b4424eff9" Name="Diagram1">
+        <EntityTypeShape EntityType="ResumeMakerDatabaseModel.educationTable" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResumeMakerDatabaseModel.examTable" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResumeMakerDatabaseModel.extraCurricularTable" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResumeMakerDatabaseModel.profileTable" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResumeMakerDatabaseModel.referenceTable" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResumeMakerDatabaseModel.skillsSetTable" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResumeMakerDatabaseModel.skillsTable" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ResumeMakerDatabaseModel.toolsExpertiseLevel" Width="1.5" PointX="3.75" PointY="14.375" IsExpanded="true" />
+        <AssociationConnector Association="ResumeMakerDatabaseModel.FK_educationTable_examTable" ManuallyRouted="false" />
+        <AssociationConnector Association="ResumeMakerDatabaseModel.FK_educationTable_profileTable" ManuallyRouted="false" />
+        <AssociationConnector Association="ResumeMakerDatabaseModel.FK_extraCurricularTable_profileTable" ManuallyRouted="false" />
+        <AssociationConnector Association="ResumeMakerDatabaseModel.FK_referenceTable_profileTable" ManuallyRouted="false" />
+        <AssociationConnector Association="ResumeMakerDatabaseModel.FK_skillsTable_profileTable" ManuallyRouted="false" />
+        <AssociationConnector Association="ResumeMakerDatabaseModel.FK_skillsTable_skillsSetTable" ManuallyRouted="false" />
+        <AssociationConnector Association="ResumeMakerDatabaseModel.FK_skillsTable_toolsExpertiseLevel" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ResumeMakerDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="educationTable">
+    <Key>
+      <PropertyRef Name="education_id" />
+    </Key>
+    <Property Name="education_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="resume_id" Type="int" Nullable="false" />
+    <Property Name="exam_id" Type="int" Nullable="false" />
+    <Property Name="institute_name" Type="varchar" MaxLength="50" />
+    <Property Name="result" Type="float" />
+    <Property Name="graduation_year" Type="int" />
+  </EntityType>
+  <EntityType Name="examTable">
+    <Key>
+      <PropertyRef Name="exam_id" />
+    </Key>
+    <Property Name="exam_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="exam_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="extraCurricularTable">
+    <Key>
+      <PropertyRef Name="extraCrId" />
+    </Key>
+    <Property Name="extraCrId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="resume_id" Type="int" Nullable="false" />
+    <Property Name="activity" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="profileTable">
+    <Key>
+      <PropertyRef Name="ressume_id" />
+    </Key>
+    <Property Name="ressume_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="int" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="linkedin" Type="varchar" MaxLength="50" />
+    <Property Name="github" Type="varchar" MaxLength="50" />
+    <Property Name="profile_descr" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="referenceTable">
+    <Key>
+      <PropertyRef Name="r_id" />
+    </Key>
+    <Property Name="r_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="resume_id" Type="int" Nullable="false" />
+    <Property Name="teacher_name" Type="varchar" MaxLength="50" />
+    <Property Name="teacher_email" Type="varchar" MaxLength="50" />
+    <Property Name="teacher_phone" Type="int" />
+  </EntityType>
+  <EntityType Name="skillsSetTable">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tools" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="skillsTable">
+    <Key>
+      <PropertyRef Name="skill_id" />
+    </Key>
+    <Property Name="skill_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="resume_id" Type="int" Nullable="false" />
+    <Property Name="s_id" Type="int" Nullable="false" />
+    <Property Name="toolsExpertId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="toolsExpertiseLevel">
+    <Key>
+      <PropertyRef Name="toolsExpertId" />
+    </Key>
+    <Property Name="toolsExpertId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="expertise" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_educationTable_examTable">
+    <End Role="examTable" Type="Self.examTable" Multiplicity="1" />
+    <End Role="educationTable" Type="Self.educationTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examTable">
+        <PropertyRef Name="exam_id" />
+      </Principal>
+      <Dependent Role="educationTable">
+        <PropertyRef Name="exam_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_educationTable_profileTable">
+    <End Role="profileTable" Type="Self.profileTable" Multiplicity="1" />
+    <End Role="educationTable" Type="Self.educationTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profileTable">
+        <PropertyRef Name="ressume_id" />
+      </Principal>
+      <Dependent Role="educationTable">
+        <PropertyRef Name="resume_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_extraCurricularTable_profileTable">
+    <End Role="profileTable" Type="Self.profileTable" Multiplicity="1" />
+    <End Role="extraCurricularTable" Type="Self.extraCurricularTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profileTable">
+        <PropertyRef Name="ressume_id" />
+      </Principal>
+      <Dependent Role="extraCurricularTable">
+        <PropertyRef Name="resume_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_referenceTable_profileTable">
+    <End Role="profileTable" Type="Self.profileTable" Multiplicity="1" />
+    <End Role="referenceTable" Type="Self.referenceTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profileTable">
+        <PropertyRef Name="ressume_id" />
+      </Principal>
+      <Dependent Role="referenceTable">
+        <PropertyRef Name="resume_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_skillsTable_profileTable">
+    <End Role="profileTable" Type="Self.profileTable" Multiplicity="1" />
+    <End Role="skillsTable" Type="Self.skillsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profileTable">
+        <PropertyRef Name="ressume_id" />
+      </Principal>
+      <Dependent Role="skillsTable">
+        <PropertyRef Name="resume_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_skillsTable_skillsSetTable">
+    <End Role="skillsSetTable" Type="Self.skillsSetTable" Multiplicity="1" />
+    <End Role="skillsTable" Type="Self.skillsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="skillsSetTable">
+        <PropertyRef Name="s_id" />
+      </Principal>
+      <Dependent Role="skillsTable">
+        <PropertyRef Name="s_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_skillsTable_toolsExpertiseLevel">
+    <End Role="toolsExpertiseLevel" Type="Self.toolsExpertiseLevel" Multiplicity="1" />
+    <End Role="skillsTable" Type="Self.skillsTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="toolsExpertiseLevel">
+        <PropertyRef Name="toolsExpertId" />
+      </Principal>
+      <Dependent Role="skillsTable">
+        <PropertyRef Name="toolsExpertId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ResumeMakerDatabaseModelStoreContainer">
+    <EntitySet Name="educationTable" EntityType="Self.educationTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="examTable" EntityType="Self.examTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="extraCurricularTable" EntityType="Self.extraCurricularTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="profileTable" EntityType="Self.profileTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="referenceTable" EntityType="Self.referenceTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="skillsSetTable" EntityType="Self.skillsSetTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="skillsTable" EntityType="Self.skillsTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="toolsExpertiseLevel" EntityType="Self.toolsExpertiseLevel" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_educationTable_examTable" Association="Self.FK_educationTable_examTable">
+      <End Role="examTable" EntitySet="examTable" />
+      <End Role="educationTable" EntitySet="educationTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_educationTable_profileTable" Association="Self.FK_educationTable_profileTable">
+      <End Role="profileTable" EntitySet="profileTable" />
+      <End Role="educationTable" EntitySet="educationTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_extraCurricularTable_profileTable" Association="Self.FK_extraCurricularTable_profileTable">
+      <End Role="profileTable" EntitySet="profileTable" />
+      <End Role="extraCurricularTable" EntitySet="extraCurricularTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_referenceTable_profileTable" Association="Self.FK_referenceTable_profileTable">
+      <End Role="profileTable" EntitySet="profileTable" />
+      <End Role="referenceTable" EntitySet="referenceTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_skillsTable_profileTable" Association="Self.FK_skillsTable_profileTable">
+      <End Role="profileTable" EntitySet="profileTable" />
+      <End Role="skillsTable" EntitySet="skillsTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_skillsTable_skillsSetTable" Association="Self.FK_skillsTable_skillsSetTable">
+      <End Role="skillsSetTable" EntitySet="skillsSetTable" />
+      <End Role="skillsTable" EntitySet="skillsTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_skillsTable_toolsExpertiseLevel" Association="Self.FK_skillsTable_toolsExpertiseLevel">
+      <End Role="toolsExpertiseLevel" EntitySet="toolsExpertiseLevel" />
+      <End Role="skillsTable" EntitySet="skillsTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ResumeMakerDatabaseModelStoreContainer" CdmEntityContainer="ResumeMakerDatabaseEntities">
+    <EntitySetMapping Name="educationTables">
+      <EntityTypeMapping TypeName="ResumeMakerDatabaseModel.educationTable">
+        <MappingFragment StoreEntitySet="educationTable">
+          <ScalarProperty Name="education_id" ColumnName="education_id" />
+          <ScalarProperty Name="resume_id" ColumnName="resume_id" />
+          <ScalarProperty Name="exam_id" ColumnName="exam_id" />
+          <ScalarProperty Name="institute_name" ColumnName="institute_name" />
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="graduation_year" ColumnName="graduation_year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="examTables">
+      <EntityTypeMapping TypeName="ResumeMakerDatabaseModel.examTable">
+        <MappingFragment StoreEntitySet="examTable">
+          <ScalarProperty Name="exam_id" ColumnName="exam_id" />
+          <ScalarProperty Name="exam_name" ColumnName="exam_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="extraCurricularTables">
+      <EntityTypeMapping TypeName="ResumeMakerDatabaseModel.extraCurricularTable">
+        <MappingFragment StoreEntitySet="extraCurricularTable">
+          <ScalarProperty Name="extraCrId" ColumnName="extraCrId" />
+          <ScalarProperty Name="resume_id" ColumnName="resume_id" />
+          <ScalarProperty Name="activity" ColumnName="activity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profileTables">
+      <EntityTypeMapping TypeName="ResumeMakerDatabaseModel.profileTable">
+        <MappingFragment StoreEntitySet="profileTable">
+          <ScalarProperty Name="ressume_id" ColumnName="ressume_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+          <ScalarProperty Name="github" ColumnName="github" />
+          <ScalarProperty Name="profile_descr" ColumnName="profile_descr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="referenceTables">
+      <EntityTypeMapping TypeName="ResumeMakerDatabaseModel.referenceTable">
+        <MappingFragment StoreEntitySet="referenceTable">
+          <ScalarProperty Name="r_id" ColumnName="r_id" />
+          <ScalarProperty Name="resume_id" ColumnName="resume_id" />
+          <ScalarProperty Name="teacher_name" ColumnName="teacher_name" />
+          <ScalarProperty Name="teacher_email" ColumnName="teacher_email" />
+          <ScalarProperty Name="teacher_phone" ColumnName="teacher_phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="skillsSetTables">
+      <EntityTypeMapping TypeName="ResumeMakerDatabaseModel.skillsSetTable">
+        <MappingFragment StoreEntitySet="skillsSetTable">
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="tools" ColumnName="tools" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="skillsTables">
+      <EntityTypeMapping TypeName="ResumeMakerDatabaseModel.skillsTable">
+        <MappingFragment StoreEntitySet="skillsTable">
+          <ScalarProperty Name="skill_id" ColumnName="skill_id" />
+          <ScalarProperty Name="resume_id" ColumnName="resume_id" />
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="toolsExpertId" ColumnName="toolsExpertId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="toolsExpertiseLevels">
+      <EntityTypeMapping TypeName="ResumeMakerDatabaseModel.toolsExpertiseLevel">
+        <MappingFragment StoreEntitySet="toolsExpertiseLevel">
+          <ScalarProperty Name="toolsExpertId" ColumnName="toolsExpertId" />
+          <ScalarProperty Name="expertise" ColumnName="expertise" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
